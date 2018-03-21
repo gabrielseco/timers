@@ -1,0 +1,16 @@
+{
+  "env": {
+    "production": {
+      "presets": ["minify"]
+    }
+  },
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "transform-object-rest-spread",
+    "@babel/plugin-proposal-pipeline-operator"
+  ]
+}
