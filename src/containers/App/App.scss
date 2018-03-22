@@ -5,11 +5,10 @@ $margin-container: 20px;
   display: block;
   margin-left: 20px;
   margin-right: 20px;
-  margin-top: 20vh;
 
   @media(min-width: 800px) {
     display: inline-block;
-    width: calc(#{$width-container} - #{$margin-container});
+    margin-top: 20vh;
   }
 }
 
