@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { hot } from 'react-hot-loader';
 import styles from './App.scss';
 
 import { CountDownTimer } from './../../components';
@@ -22,4 +21,5 @@ class App extends Component {
     return <div className={styles.container}>{counters}</div>;
   }
 }
-export default hot(module)(App);
+
+export default App;
