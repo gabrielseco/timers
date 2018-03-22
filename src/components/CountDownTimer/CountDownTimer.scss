@@ -22,10 +22,17 @@ $color-description: #ffffff;
 }
 
 .wrapperDates {
+  align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-bottom: 20px;
   padding: 0 10px;
+
+  @media(min-width: 800px) {
+    align-items: flex-start;
+    flex-direction: row;
+  }
 }
 
 .box {
@@ -36,8 +43,13 @@ $color-description: #ffffff;
   flex-direction: column;
   height: $width-box;
   justify-content: center;
+  margin-bottom: 20px;
   margin-right: 20px;
   width: $width-box;
+
+  @media(min-width: 800px) {
+    margin-bottom: 0;
+  }
 }
 
 .boxTitle {
