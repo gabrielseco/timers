@@ -1,8 +1,28 @@
 import { DateTime } from 'luxon';
 
+const BuildDate = date => DateTime.fromJSDate(date);
+
 export default class LuxonDate {
   constructor(date) {
-    this._date = DateTime.fromJSDate(date);
+    this._originalDate = date;
+    this._date = BuildDate(date);
+  }
+
+  getDaysAndTimeRemaing(date) {
+    const difference = this._originalDate.getTime() - date.getTime();
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    return {
+      days: days,
+      hours: hours,
+      minutes: minutes,
+      seconds: seconds
+    };
   }
 
   getDay() {
@@ -20,5 +40,4 @@ export default class LuxonDate {
   getYear() {
     return this._date.toLocaleString({ year: 'numeric' });
   }
-
- }
+}

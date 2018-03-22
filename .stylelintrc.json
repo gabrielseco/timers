@@ -11,6 +11,12 @@
     "color-hex-length": "long",
     "selector-class-pattern": null,
     "string-quotes": "single",
-    "block-no-empty": null
+    "block-no-empty": null,
+    "property-no-unknown": [ true, {
+      "ignoreProperties": [
+        "composes",
+        "compose-with"
+      ]
+    }]
   }
 }

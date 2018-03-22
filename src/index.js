@@ -3,4 +3,6 @@ import { render } from 'react-dom';
 
 import { App } from './containers';
 
-render(<App/>, document.getElementById('root'));
+require('./index.scss');
+
+render(<App />, document.getElementById('root'));
