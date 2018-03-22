@@ -9,8 +9,13 @@ $margin-container: 20px;
 }
 
 .containerCounter {
-  display: inline-block;
-  width: calc(#{$width-container} - #{$margin-container});
+  display: block;
+  width: 100%;
+
+  @media(min-width: 800px) {
+    display: inline-block;
+    width: calc(#{$width-container} - #{$margin-container});
+  }
 }
 
 .containerCounter:last-child {
