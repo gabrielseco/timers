@@ -1,0 +1,3 @@
+const MAGIC_STRING = 'BUENOS DÍAS ANDALUCÍA';
+
+export default MAGIC_STRING;

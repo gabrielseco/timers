@@ -40,4 +40,16 @@ export default class LuxonDate {
   getYear() {
     return this._date.toLocaleString({ year: 'numeric' });
   }
+
+  getHours() {
+    return this._date.hour;
+  }
+
+  getMinutes() {
+    return this._date.minute;
+  }
+
+  getSeconds() {
+    return this._date.second;
+  }
 }
