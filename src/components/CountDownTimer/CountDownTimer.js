@@ -6,6 +6,14 @@ import LuxonDate from './../../utils/luxon-date';
 class CountDownTimer extends Component {
   constructor(props) {
     super(props);
+    this.countDownInitialState = {
+      countdown: {
+        days: '0',
+        hours: '0',
+        minutes: '0',
+        seconds: '0'
+      }
+    };
     this.state = {
       date: {
         dayOfWeek: '',
@@ -13,12 +21,7 @@ class CountDownTimer extends Component {
         month: '',
         year: ''
       },
-      countdown: {
-        days: '0',
-        hours: '0',
-        minutes: '0',
-        seconds: '0'
-      }
+      ...this.countDownInitialState
     };
     this.luxonDate = new LuxonDate(props.date);
   }
@@ -60,17 +63,26 @@ class CountDownTimer extends Component {
       seconds
     } = this.luxonDate.getDaysAndTimeRemaing(date);
 
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        countdown: {
-          days: days,
-          hours: hours,
-          minutes: minutes,
-          seconds: seconds
-        }
-      };
-    });
+    if (days < 0) {
+      this.setState(prevState => {
+        return {
+          ...prevState,
+          ...this.countDownInitialState
+        };
+      });
+    } else {
+      this.setState(prevState => {
+        return {
+          ...prevState,
+          countdown: {
+            days: days,
+            hours: hours,
+            minutes: minutes,
+            seconds: seconds
+          }
+        };
+      });
+    }
   }
 
   render() {
