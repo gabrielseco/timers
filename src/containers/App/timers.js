@@ -19,8 +19,8 @@ const timers = [
     date: new Date(2018, 5, 28, 10, 0, 0)
   },
   {
-    title: `Desayuno Iñaki`,
-    date: new Date(2018, 3, 13, 10, 0, 0)
+    title: `Desayuno Angel`,
+    date: new Date(2018, 3, 18, 10, 0, 0)
   }
 ];
 
