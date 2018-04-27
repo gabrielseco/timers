@@ -39,8 +39,10 @@
     }
   },
   "browserslist": [
-    "> 1%",
-    "last 2 versions"
+    "> 0.25%",
+    "last 2 versions",
+    "not ie 10",
+    "not op_mini all"
   ],
   "keywords": [],
   "author": "Gabriel García Seco",
