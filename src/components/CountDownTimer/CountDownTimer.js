@@ -44,18 +44,17 @@ class CountDownTimer extends Component {
       };
     });
 
-    this.updateInterval();
-
-    this.interval = setInterval(() => this.updateInterval(), 1000);
+    this.updateDate(this.props.currentDate);
   }
 
-  componentWillUnmount() {
-    clearInterval(this.interval);
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentDate !== this.props.currentDate) {
+      const date = this.props.currentDate;
+      this.updateDate(date);
+    }
   }
 
-  updateInterval() {
-    const date = new Date();
-
+  updateDate(date) {
     const {
       days,
       hours,
@@ -121,6 +120,7 @@ class CountDownTimer extends Component {
 }
 
 CountDownTimer.propTypes = {
+  currentDate: PropTypes.object,
   date: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired
 };
