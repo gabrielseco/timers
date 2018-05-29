@@ -6,7 +6,7 @@ const getMonth = date => {
   return month.slice(0, 1).toUpperCase() + month.slice(1);
 };
 
-const datePayment = new Date(2018, 4, 30, 10, 0, 0);
+const datePayment = new Date(2018, 5, 28, 10, 0, 0);
 
 const normalPayment = {
   title: `Nómina ${getMonth(datePayment)}`,
@@ -16,7 +16,7 @@ const normalPayment = {
 const timers = [
   {
     title: 'Paga Extra',
-    date: new Date(2018, 5, 30, 10, 0, 0)
+    date: new Date(2018, 5, 28, 10, 0, 0)
   },
   normalPayment
 ];
