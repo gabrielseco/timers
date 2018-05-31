@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import styles from './App.scss';
 
-import { CountDownTimer } from './../../components';
+import {
+  CountDownTimer,
+  COUNTDOWNTIMER_TYPE_FORWARD
+} from './../../components';
 import timers from './timers';
 
 class App extends Component {
@@ -42,8 +45,30 @@ class App extends Component {
   }
 
   render() {
-    const counters = this.renderCounters();
-    return <div className={styles.container}>{counters}</div>;
+    /* const counters = this.renderCounters(); */
+    return (
+      <div className={styles.container}>
+        <div className={styles.containerCounter}>
+          <CountDownTimer
+            title={timers[0].title}
+            date={timers[0].date}
+            currentDate={this.state.date}
+          />
+        </div>
+        <div className={styles.containerCounter}>
+          <CountDownTimer
+            title="ApaHuida"
+            date={new Date(2018, 4, 31, 17, 30, 0)}
+            currentDate={this.state.date}
+            type={COUNTDOWNTIMER_TYPE_FORWARD}
+            subtitleDescription={[
+              'Cachopo Team 4 / 7',
+              'Overall Apa Team 6 / 10'
+            ]}
+          />
+        </div>
+      </div>
+    );
   }
 }
 

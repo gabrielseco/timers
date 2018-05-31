@@ -3,6 +3,25 @@ import PropTypes from 'prop-types';
 import styles from './CountDownTimer.scss';
 import LuxonDate from './../../utils/luxon-date';
 
+export const COUNTDOWNTIMER_TYPE_BACKWARDS = 'backwards';
+export const COUNTDOWNTIMER_TYPE_FORWARD = 'forward';
+
+function getInstanceDate({ date, currentDate, type }) {
+  const luxon =
+    type === COUNTDOWNTIMER_TYPE_BACKWARDS
+      ? new LuxonDate(date)
+      : new LuxonDate(currentDate);
+  return luxon;
+}
+
+function getPropDateByType({ date, currentDate, type }) {
+  return type === COUNTDOWNTIMER_TYPE_BACKWARDS ? currentDate : date;
+}
+
+function getTypeDescription(type) {
+  return type === COUNTDOWNTIMER_TYPE_FORWARD ? 'desde' : 'hasta';
+}
+
 class CountDownTimer extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +42,11 @@ class CountDownTimer extends Component {
       },
       ...this.countDownInitialState
     };
-    this.luxonDate = new LuxonDate(props.date);
+    this.luxonDate = getInstanceDate({
+      date: this.props.date,
+      currentDate: this.props.currentDate,
+      type: this.props.type
+    });
   }
 
   componentDidMount() {
@@ -44,12 +67,29 @@ class CountDownTimer extends Component {
       };
     });
 
-    this.updateDate(this.props.currentDate);
+    const date = getPropDateByType({
+      date: this.props.date,
+      currentDate: this.props.currentDate,
+      type: this.props.type
+    });
+
+    this.updateDate(date);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.currentDate !== this.props.currentDate) {
-      const date = this.props.currentDate;
+      if (this.props.type === COUNTDOWNTIMER_TYPE_FORWARD) {
+        this.luxonDate = getInstanceDate({
+          date: this.props.date,
+          currentDate: this.props.currentDate,
+          type: this.props.type
+        });
+      }
+      const date = getPropDateByType({
+        date: this.props.date,
+        currentDate: this.props.currentDate,
+        type: this.props.type
+      });
       this.updateDate(date);
     }
   }
@@ -62,7 +102,10 @@ class CountDownTimer extends Component {
       seconds
     } = this.luxonDate.getDaysAndTimeRemaing(date);
 
-    if (days < 0) {
+    const isTheDateRightNow =
+      days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0;
+
+    if (isTheDateRightNow) {
       this.setState(prevState => {
         return {
           ...prevState,
@@ -84,10 +127,17 @@ class CountDownTimer extends Component {
     }
   }
 
+  renderSubtitles(subtitles) {
+    return subtitles.map(subtitle => {
+      return <p className={styles.subtitleDescription}>{subtitle}</p>;
+    });
+  }
+
   render() {
-    const { title } = this.props;
+    const { title, type } = this.props;
     const { dayOfWeek, day, month, year } = this.state.date;
     const { days, hours, minutes, seconds } = this.state.countdown;
+    const typeOfDescription = getTypeDescription(type);
     return (
       <div className={styles.container}>
         <h2 className={styles.title}>{title}</h2>
@@ -111,18 +161,28 @@ class CountDownTimer extends Component {
         </div>
         <div className={styles.dateDescription}>
           <span>
-            Tiempo hasta {dayOfWeek}, {day} de {month} de {year} (Madrid time)
+            Tiempo {typeOfDescription} {dayOfWeek}, {day} de {month} de {year}{' '}
+            (Madrid time)
           </span>
         </div>
+        {this.props.subtitleDescription
+          ? this.renderSubtitles(this.props.subtitleDescription)
+          : null}
       </div>
     );
   }
 }
 
+CountDownTimer.defaultProps = {
+  type: COUNTDOWNTIMER_TYPE_BACKWARDS
+};
+
 CountDownTimer.propTypes = {
   currentDate: PropTypes.object,
   date: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired
+  subtitleDescription: PropTypes.any,
+  title: PropTypes.string.isRequired,
+  type: PropTypes.string
 };
 
 export default CountDownTimer;
