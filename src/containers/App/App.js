@@ -58,12 +58,12 @@ class App extends Component {
         <div className={styles.containerCounter}>
           <CountDownTimer
             title="ApaHuida"
-            date={new Date(2018, 5, 7, 10, 20, 0)}
+            date={new Date(2018, 5, 20, 17, 30, 0)}
             currentDate={this.state.date}
             type={COUNTDOWNTIMER_TYPE_FORWARD}
             subtitleDescription={[
-              'Cachopo Team 3 / 7',
-              'Overall Apa Team 5 / 10'
+              'Cachopo Team 2 / 7',
+              'Overall Apa Team 4 / 10'
             ]}
           />
         </div>
