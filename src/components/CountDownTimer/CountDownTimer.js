@@ -50,10 +50,11 @@ class CountDownTimer extends Component {
   }
 
   componentDidMount() {
-    const dayOfWeek = this.luxonDate.getDayOfTheWeek();
-    const day = this.luxonDate.getDay();
-    const month = this.luxonDate.getMonth();
-    const year = this.luxonDate.getYear();
+    const luxonInstance = new LuxonDate(this.props.date);
+    const dayOfWeek = luxonInstance.getDayOfTheWeek();
+    const day = luxonInstance.getDay();
+    const month = luxonInstance.getMonth();
+    const year = luxonInstance.getYear();
 
     this.setState(prevState => {
       return {
