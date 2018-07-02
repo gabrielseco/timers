@@ -140,7 +140,9 @@ class CountDownTimer extends Component {
     const typeOfDescription = getTypeDescription(type);
     return (
       <div className={styles.container}>
-        <h2 className={styles.title}>{title}</h2>
+        <div className={styles.headerContainer}>
+          <h2 className={styles.title}>{title}</h2>
+        </div>
         <div className={styles.wrapperDates}>
           <div className={styles.box}>
             <h3 className={styles.boxTitle}>{days}</h3>

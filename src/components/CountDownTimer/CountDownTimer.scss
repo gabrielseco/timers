@@ -15,6 +15,10 @@ $color-description: #ffffff;
   width: 100%;
 }
 
+.headerContainer {
+  min-height: 12em;
+}
+
 .title {
   color: $title-color-timer;
   font-size: 3rem;
