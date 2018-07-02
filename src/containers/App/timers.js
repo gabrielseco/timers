@@ -15,8 +15,8 @@ const normalPayment = {
 
 const timers = [
   {
-    title: 'Paga Extra',
-    date: new Date(2018, 5, 28, 10, 0, 0)
+    title: 'Red Dead Redemption 2',
+    date: new Date(2018, 9, 26, 0, 0, 0)
   },
   normalPayment
 ];
