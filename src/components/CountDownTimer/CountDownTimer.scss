@@ -16,13 +16,18 @@ $color-description: #ffffff;
 }
 
 .headerContainer {
-  min-height: 12em;
+  min-height: 8em;
 }
 
 .title {
   color: $title-color-timer;
   font-size: 3rem;
   text-align: center;
+
+  @media(min-width: 800px) {
+    font-size: 5rem;
+
+  }
 }
 
 .wrapperDates {

@@ -5,10 +5,19 @@ $margin-container: 20px;
   display: block;
   margin-left: 20px;
   margin-right: 20px;
+  width: 100%;
 
   @media(min-width: 800px) {
     display: inline-block;
     margin-top: 15vh;
+  }
+
+  .phrase {
+    color: #ffffff;
+    font-size: 3rem;
+    margin-bottom: 1em;
+    margin-top: 0;
+    text-align: center;
   }
 }
 

@@ -3,7 +3,7 @@ import styles from './App.scss';
 
 import {
   CountDownTimer,
-  COUNTDOWNTIMER_TYPE_FORWARD
+  COUNTDOWNTIMER_TYPE_BACKWARDS
 } from './../../components';
 import timers from './timers';
 
@@ -48,25 +48,13 @@ class App extends Component {
     /* const counters = this.renderCounters(); */
     return (
       <div className={styles.container}>
-        <div className={styles.containerCounter}>
-          <CountDownTimer
-            title={timers[0].title}
-            date={timers[0].date}
-            currentDate={this.state.date}
-          />
-        </div>
-        <div className={styles.containerCounter}>
-          <CountDownTimer
-            title="ApaHuida"
-            date={new Date(2018, 6, 31, 10, 19, 0)}
-            currentDate={this.state.date}
-            type={COUNTDOWNTIMER_TYPE_FORWARD}
-            subtitleDescription={[
-              'Cachopo Team 1 / 7',
-              'Overall Apa Team 2 / 10'
-            ]}
-          />
-        </div>
+        <CountDownTimer
+          title="ApaHuida Mission Completed"
+          date={new Date(2018, 7, 2, 13, 10, 0)}
+          currentDate={new Date(2018, 7, 2, 13, 10, 0)}
+          type={COUNTDOWNTIMER_TYPE_BACKWARDS}
+        />
+        <h3 className={styles.phrase}>Cachopo Team is ANNIHILATED</h3>
       </div>
     );
   }

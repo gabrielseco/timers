@@ -18,9 +18,9 @@ function getPropDateByType({ date, currentDate, type }) {
   return type === COUNTDOWNTIMER_TYPE_BACKWARDS ? currentDate : date;
 }
 
-function getTypeDescription(type) {
+/* function getTypeDescription(type) {
   return type === COUNTDOWNTIMER_TYPE_FORWARD ? 'desde' : 'hasta';
-}
+} */
 
 class CountDownTimer extends Component {
   constructor(props) {
@@ -34,12 +34,12 @@ class CountDownTimer extends Component {
       }
     };
     this.state = {
-      date: {
+      /* date: {
         dayOfWeek: '',
         day: '',
         month: '',
         year: ''
-      },
+      }, */
       ...this.countDownInitialState
     };
     this.luxonDate = getInstanceDate({
@@ -135,11 +135,16 @@ class CountDownTimer extends Component {
   }
 
   render() {
-    const { title, type } = this.props;
-    const { dayOfWeek, day, month, year } = this.state.date;
-    const { days, hours, minutes, seconds } = this.state.countdown;
-    const typeOfDescription = getTypeDescription(type);
-    return (
+    const { title /* type */ } = this.props;
+    /*     const { dayOfWeek, day, month, year } = this.state.date;
+ */ const {
+      days,
+      hours,
+      minutes,
+      seconds
+    } = this.state.countdown;
+    /*     const typeOfDescription = getTypeDescription(type);
+ */ return (
       <div className={styles.container}>
         <div className={styles.headerContainer}>
           <h2 className={styles.title}>{title}</h2>
@@ -163,10 +168,10 @@ class CountDownTimer extends Component {
           </div>
         </div>
         <div className={styles.dateDescription}>
-          <span>
+          {/* <span>
             Tiempo {typeOfDescription} {dayOfWeek}, {day} de {month} de {year}{' '}
             (Madrid time)
-          </span>
+          </span> */}
         </div>
         {this.props.subtitleDescription
           ? this.renderSubtitles(this.props.subtitleDescription)
